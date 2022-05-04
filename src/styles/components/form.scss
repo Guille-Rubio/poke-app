@@ -1,0 +1,28 @@
+.form {
+    
+    display: flex;
+    flex-wrap: flex;
+    gap:5px;
+}
+.form * {
+    border:2px solid $pokered;
+}
+.form>div{
+    display:flex;
+    flex-direction: column;
+}
+
+.form>div>label {
+    margin: 5px;
+
+}
+
+
+
+.form__preview{
+    flex-direction: column;
+}
+
+.form__preview>img {
+    max-width: 250px;
+}

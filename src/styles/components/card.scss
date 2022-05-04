@@ -1,0 +1,27 @@
+@import '../utils/mixins.scss';
+
+.card{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    border:1px solid $pokered;
+    background-color: $pokeyellow;
+    border-radius: 15px;
+    @include shadow;
+    
+
+}
+
+.card >h1 {
+    text-align: center;
+}
+
+.card>p{
+    margin:3px;
+}
+
+
+.card > img{
+max-width:100px;
+
+}

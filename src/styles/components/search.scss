@@ -1,0 +1,22 @@
+.search__form{
+    display:flex;
+    justify-content: center;
+    margin:15px;
+
+
+}
+
+
+.search__card-container{
+    padding:15px;
+    display:flex;
+    flex-wrap: wrap;
+    gap:15px;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid $pokered;
+    background-color: $pokeblue;
+    width:90vw;
+    min-height:50vh;
+    border-radius: 15px;
+}
