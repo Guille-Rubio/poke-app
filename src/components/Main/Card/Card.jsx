@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 
 const Card = (props) => {
@@ -13,9 +14,9 @@ const Card = (props) => {
   const { name, order } = props.value
   const image = props.value.sprites.other.dream_world.front_default
   const type_1 = props.value.types[0]["type"]["name"] || "";
-  const type_2 = props.value.types[1]?props.value.types[1]["type"]["name"]:"";
+  const type_2 = props.value.types[1] ? props.value.types[1]["type"]["name"] : "";
 
- 
+
 
 
   return <div className="card">
@@ -25,7 +26,7 @@ const Card = (props) => {
     <p>#{order}</p>
     <p>type: {type_1}</p>
     <p>type: {type_2}</p>
-    <button>View detail</button>
+    <Link to={`/pokemon/${order}`}><button>View detail</button></Link>
 
   </div>;
 };

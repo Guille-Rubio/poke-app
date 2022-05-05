@@ -13,9 +13,12 @@ const Home = () => {
 
   useEffect(() => {
     if (value !== "") {
-      (async () => {
-        setPokelist([...pokelist, await fetchData(`https://pokeapi.co/api/v2/pokemon/${value}`)])
-      })()
+      const filtered = pokelist.filter(pokemon => pokemon.name !== value)
+      if (filtered.length === pokelist.length) {
+        (async () => {
+          setPokelist([...pokelist, await fetchData(`https://pokeapi.co/api/v2/pokemon/${value}`)])
+        })()
+      }
     }
   }, [value])
 
@@ -33,10 +36,7 @@ const Home = () => {
     <p>value:{value}</p>
 
     <div className="home__card-container">
-      {console.log("pokelist", pokelist)}
       {pokelist.map(pokemon => <Card value={pokemon} key={uuidv4()} />)}
-
-
     </div>
 
   </div>;
