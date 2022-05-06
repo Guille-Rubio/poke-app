@@ -9,7 +9,7 @@ const Home = () => {
 
   const [pokelist, setPokelist] = useState([]);
   const [input, setInput] = useState("");
-  const [value] = useDebounce(input, 3000);
+  const [value] = useDebounce(input, 2000);
 
   useEffect(() => {
     if (value !== "") {
@@ -20,19 +20,26 @@ const Home = () => {
         })()
       }
     }
-  }, [value])
+  }, [value]
+  )
 
   const inputHandler = (event) => {
     event.preventDefault();
     setInput(event.target.value);
   }
 
+  const removeCard = (i) => {
+    const remainingCards = pokelist.filter((pokemon, j) => i !== j)
+    setPokelist({ remainingCards })
+
+  }
+
   return <div className="home">
     <h1>Poke App</h1>
     <input type="text" name="input" placeholder="Type your liked pokemon here" onChange={inputHandler} className="home__input" />
-
+{/* HACER UN COMPONENTE PARA EL CONTENEDOR DE TARJETAS */}
     <div className="home__card-container">
-      {pokelist.map(pokemon => <Card value={pokemon} key={uuidv4()} />)}
+      {pokelist.map((pokemon, i) => <Card value={pokemon} key={uuidv4()} remove={()=>removeCard(i)} index={i} />)}
     </div>
 
   </div>;

@@ -8,9 +8,7 @@ const Detail = (props) => {
   const [id] = useState(params.id);
   const [pokemon, setPokemon] = useState(seed[0])
 
-
-  console.log(id);
-  console.log("pokemon", pokemon)
+  console.log("pokemon: " + pokemon.name, pokemon)
 
   useEffect(() => {
     async function changePokemonToShow() {
@@ -24,13 +22,13 @@ const Detail = (props) => {
 
 
  
-  const sprite = pokemon.sprites.other.dream_world.front_default
+ 
 
   return <div className="detail">
     <div>
       <h1>{pokemon.name}</h1>
-      <p># {pokemon.order}</p>
-      <img src={sprite} alt="Pokemon" />
+      <p># {pokemon.id}</p>
+      <img src={pokemon.sprites.other.dream_world.front_default} alt="Pokemon" />
     </div>
     <div>
       <h2>Basic information</h2>
