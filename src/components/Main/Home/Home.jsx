@@ -22,18 +22,14 @@ const Home = () => {
     }
   }, [value])
 
-
   const inputHandler = (event) => {
     event.preventDefault();
     setInput(event.target.value);
   }
 
-
   return <div className="home">
     <h1>Poke App</h1>
     <input type="text" name="input" placeholder="Type your liked pokemon here" onChange={inputHandler} className="home__input" />
-    <p>input: {input} </p>
-    <p>value:{value}</p>
 
     <div className="home__card-container">
       {pokelist.map(pokemon => <Card value={pokemon} key={uuidv4()} />)}
