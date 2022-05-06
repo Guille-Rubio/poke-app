@@ -10,7 +10,7 @@ const Main = () => {
     <Routes>
       <Route element={<Home />} path='/' />
       <Route element={<Form />} path='/new' />
-      <Route element={<Detail />} path='/pokemon/:id' />
+      <Route element={<Detail />} exact path='/pokemon/:id' />
       <Route element={<Search />} path='/search' />
     </Routes>
   </div>;

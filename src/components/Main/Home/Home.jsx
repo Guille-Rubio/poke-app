@@ -1,18 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from '../Card/Card';
+import fetchData from '../../../hooks/fetchData';
+import { useDebounce } from 'use-debounce';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const Home = () => {
+
+  const [pokelist, setPokelist] = useState([]);
+  const [input, setInput] = useState("");
+  const [value] = useDebounce(input, 2000);
+
+  useEffect(() => {
+    if (value !== "") {
+      const filtered = pokelist.filter(pokemon => pokemon.name !== value)
+      if (filtered.length === pokelist.length) {
+        (async () => {
+          setPokelist([...pokelist, await fetchData(`https://pokeapi.co/api/v2/pokemon/${value}`)])
+        })()
+      }
+    }
+  }, [value]
+  )
+
+  const inputHandler = (event) => {
+    event.preventDefault();
+    setInput(event.target.value);
+  }
+
+  const removeCard = (i) => {
+    const remainingCards = pokelist.filter((pokemon, j) => i !== j)
+    setPokelist({ remainingCards })
+
+  }
+
   return <div className="home">
     <h1>Poke App</h1>
-
-    <input type="text" placeholder="Type your liked pokemon here" className="home__input" />
-
+    <input type="text" name="input" placeholder="Type your liked pokemon here" onChange={inputHandler} className="home__input" />
+{/* HACER UN COMPONENTE PARA EL CONTENEDOR DE TARJETAS */}
     <div className="home__card-container">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {pokelist.map((pokemon, i) => <Card value={pokemon} key={uuidv4()} remove={()=>removeCard(i)} index={i} />)}
     </div>
 
   </div>;
