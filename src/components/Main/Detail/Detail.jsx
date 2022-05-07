@@ -21,8 +21,8 @@ const Detail = (props) => {
   )
 
 
- 
- 
+
+
 
   return <div className="detail">
     <div>
@@ -40,11 +40,11 @@ const Detail = (props) => {
     </div>
     <div>
       <h2>Forms</h2>
-      
+
 
 
     </div>
-   
+
 
 
 
