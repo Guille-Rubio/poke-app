@@ -25,3 +25,11 @@
 max-width:100px;
 
 }
+
+.card a{
+    text-decoration: none;
+}
+
+.card a:visited{
+    color:$pokered;
+}

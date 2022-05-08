@@ -4,15 +4,20 @@ import Home from './Home/Home';
 import Form from './Form/Form';
 import Detail from './Detail';
 import Search from './Search/Search';
+import { pokelistContext } from "../../context/pokelist";
 
 const Main = () => {
   return <div>
+
     <Routes>
-      <Route element={<Home />} path='/' />
-      <Route element={<Form />} path='/new' />
-      <Route element={<Detail />} exact path='/pokemon/:id' />
-      <Route element={<Search />} path='/search' />
+        <Route element={<Home />} path='/' />
+        <Route element={<Form />} path='/new' />
+        <Route element={<Detail />} exact path='/pokemon/:id' />
+        <Route element={<Search />} path='/search' />
     </Routes>
+
+   
+
   </div>;
 };
 

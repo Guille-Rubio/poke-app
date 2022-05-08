@@ -7,5 +7,34 @@
 
 .detail > div{
     padding:15px;
+}
 
+.detail p{
+    margin:0px;
+}
+
+.sprite{
+    width:100px;
+}
+
+.mainSprite{
+    width:150px;
+}
+
+.detail div{
+   
+}
+
+.detail div p{
+    display:block;
+}
+
+.details__moves{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.details__moves__p{
+    display:block;
+    margin:5px;
 }
