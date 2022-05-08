@@ -1,0 +1,9 @@
+@import '../utils/variables.scss';
+
+
+.footer{
+    background-color:$pokegray;
+    width:100%;
+    min-height:50px;
+    border-top: 2px solid $pokered;
+}

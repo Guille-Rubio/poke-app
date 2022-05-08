@@ -1,13 +1,55 @@
 .detail{
     display:flex;
+    flex-direction: column;
+    align-content: center;
+    padding:15px;
+  
+}
+.detail__header{
+    color:$pokeblue;
+    text-align: center;
+    border:5px solid $pokered;
+    background-color: $pokeyellow;
+    border-radius: 15px;;
+    padding:15px;
+    flex-grow: 3;
+    margin:15px;
+}
+
+.detail__header > h1,h2{
+    margin:0px;
+}
+
+.detail__body{
+    display:flex;
     flex-wrap: wrap;
-    align-items:center;
+    align-content:center;
     gap:15px;
 }
 
-.detail > div{
+.detail__card{
+    border:3px solid $pokeblue;
+    background-color: $pokeyellow;
+    border-radius: 15px;;
     padding:15px;
+    flex-grow: 3;
 }
+
+.detail__card > h2{
+    margin:0px;
+}
+
+.detail__card ul{
+    list-style: none;
+    padding:0px;
+}
+
+
+.detail__card li{
+    list-style: none;
+}
+
+
 
 .detail p{
     margin:0px;
@@ -15,19 +57,17 @@
 
 .sprite{
     width:100px;
+    border-radius: 15px;;
 }
 
 .mainSprite{
     width:150px;
+    margin:15px;
+    border-radius: 15px;
 }
 
-.detail div{
-   
-}
 
-.detail div p{
-    display:block;
-}
+
 
 .details__moves{
     display:flex;

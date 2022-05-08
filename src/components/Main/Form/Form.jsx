@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useForm } from 'react-hook-form';
 import { pokelistContext } from "../../../context/pokelist";
 import fetchData from "../../../hooks/fetchData";
+import { TextField, Select, MenuItem, InputLabel } from "@mui/material";
 
 const Form = () => {
   const { pokelist, addPokemon } = useContext(pokelistContext)
@@ -29,21 +30,21 @@ const Form = () => {
     const pokemonExistsInApp = () => {
       const pokelistFilteredById = pokelist.filter(pokemon => pokemon.id !== data.id);
       const pokelistFilteredByName = pokelist.filter(pokemon => pokemon.name !== data.name);
-     
+
       const nameInUse = pokelistFilteredById.length !== pokelist.length;
       const idInUse = pokelistFilteredByName.length !== pokelist.length;
-      
+
       return nameInUse || idInUse ? true : false
     }
 
     const dataInApi = await pokemonExistsInApi();
     const dataInApp = pokemonExistsInApp();
 
-    if (dataInApi||dataInApp){
+    if (dataInApi || dataInApp) {
       alert("The id/name provided is already assigned to a pokemon")
       return
     }
-    
+
     const pokemon = {
       name: data.name,
       id: data.id,
@@ -70,82 +71,84 @@ const Form = () => {
 
   return <div className="form">
     <form onSubmit={handleSubmit(onSubmit)}>
+      <h1>Add a new pokemon to the pokelist</h1>
+
+      <div className="form__preview">
+        <img src={preview ? preview : defaultPreview} alt="vista previa"></img>
+      </div>
+
       <div className="form__input-box">
-        <label htmlFor="">ID</label>
-        <input {...register("id", { required: true, valueAsNumber: true })} type="number" name="id" />
+        <TextField id="outlined-basic" label="id" variant="outlined" {...register("id", { required: true, valueAsNumber: true })} type="number" name="id" />
         <p>{errors.id?.message}</p>
       </div>
+
       <div className="form__input-box">
-        <label htmlFor="">Name</label>
-        <input {...register("name", { required: true, minLength: { value: 3, message: "Pokemon's name must be 3 long at least." } })} type="text" name="name" />
+        <TextField id="outlined-basic" label="name" variant="outlined" {...register("name", { required: true, minLength: { value: 3, message: "Pokemon's name must be 3 long at least." } })} type="text" name="name" />
         <p>{errors.name?.message}</p>
       </div>
+
       <div className="form__input-box">
-        <label htmlFor="">Image URL</label>
-        <input {...register("image", { required: true })} type="text" name="image" />
+        <TextField id="outlined-basic" label="image URL" variant="outlined" {...register("image", { required: true })} type="text" name="image" />
         <p>{errors.image?.message}</p>
       </div>
 
-
       <div className="form__input-box">
-        <label htmlFor="">Type One</label>
-        <select {...register("type1", { required: true, options: { types } })} name="type1">
+      <InputLabel id="type1">Type 1</InputLabel>
+        <Select labelId="type1" id="demo-simple-select" label="type 1" {...register("type1", { required: true, options: { types } })} name="type1">
           {/* {types.map(type => { <option value={type}>{type}</option> })}
            */}
-          <option value="Bug">Bug</option>
-          <option value="Dark">Dark</option>
-          <option value="Dragon">Dragon</option>
-          <option value="Electric">Electric</option>
-          <option value="Fairy">Fairy</option>
-          <option value="Fighting">Fighting</option>
-          <option value="Fire">Fire</option>
-          <option value="Flying">Flying</option>
-          <option value="Ghost">Ghost</option>
-          <option value="Grass">Grass</option>
-          <option value="Ground">Ground</option>
-          <option value="Ice">Ice</option>
-          <option value="Normal">Normal</option>
-          <option value="Poison">Poison</option>
-          <option value="Psychic">Psychic</option>
-          <option value="Rock">Rock</option>
-          <option value="Steel">Steel</option>
-          <option value="Water">Water</option>
-        </select>
+          <MenuItem value="Bug">Bug</MenuItem>
+          <MenuItem value="Dark">Dark</MenuItem>
+          <MenuItem value="Dragon">Dragon</MenuItem>
+          <MenuItem value="Electric">Electric</MenuItem>
+          <MenuItem value="Fairy">Fairy</MenuItem>
+          <MenuItem value="Fighting">Fighting</MenuItem>
+          <MenuItem value="Fire">Fire</MenuItem>
+          <MenuItem value="Flying">Flying</MenuItem>
+          <MenuItem value="Ghost">Ghost</MenuItem>
+          <MenuItem value="Grass">Grass</MenuItem>
+          <MenuItem value="Ground">Ground</MenuItem>
+          <MenuItem value="Ice">Ice</MenuItem>
+          <MenuItem value="Normal">Normal</MenuItem>
+          <MenuItem value="Poison">Poison</MenuItem>
+          <MenuItem value="Psychic">Psychic</MenuItem>
+          <MenuItem value="Rock">Rock</MenuItem>
+          <MenuItem value="Steel">Steel</MenuItem>
+          <MenuItem value="Water">Water</MenuItem>
+        </Select>
         <p>{errors.type1?.message}</p>
       </div>
 
-
       <div className="form__input-box">
-        <label htmlFor="">Type Two (if applicable)</label>
-        <select {...register("type2", { required: false })} type="text" name="type2" >
+      <InputLabel id="type2">Type 2</InputLabel>
+        <Select {...register("type2", { required: false })} type="text" name="type2" >
           {/*  {()=>{types.map(type=>{<><option>{type}</option></>})}} */}
-          <option></option>
-          <option value="Bug">Bug</option>
-          <option value="Dark">Dark</option>
-          <option value="Dragon">Dragon</option>
-          <option value="Electric">Electric</option>
-          <option value="Fairy">Fairy</option>
-          <option value="Fighting">Fighting</option>
-          <option value="Fire">Fire</option>
-          <option value="Flying">Flying</option>
-          <option value="Ghost">Ghost</option>
-          <option value="Grass">Grass</option>
-          <option value="Ground">Ground</option>
-          <option value="Ice">Ice</option>
-          <option value="Normal">Normal</option>
-          <option value="Poison">Poison</option>
-          <option value="Psychic">Psychic</option>
-          <option value="Rock">Rock</option>
-          <option value="Steel">Steel</option>
-          <option value="Water">Water</option>
-        </select>
+          <MenuItem value=""></MenuItem>
+          <MenuItem value="Bug">Bug</MenuItem>
+          <MenuItem value="Dark">Dark</MenuItem>
+          <MenuItem value="Dragon">Dragon</MenuItem>
+          <MenuItem value="Electric">Electric</MenuItem>
+          <MenuItem value="Fairy">Fairy</MenuItem>
+          <MenuItem value="Fighting">Fighting</MenuItem>
+          <MenuItem value="Fire">Fire</MenuItem>
+          <MenuItem value="Flying">Flying</MenuItem>
+          <MenuItem value="Ghost">Ghost</MenuItem>
+          <MenuItem value="Grass">Grass</MenuItem>
+          <MenuItem value="Ground">Ground</MenuItem>
+          <MenuItem value="Ice">Ice</MenuItem>
+          <MenuItem value="Normal">Normal</MenuItem>
+          <MenuItem value="Poison">Poison</MenuItem>
+          <MenuItem value="Psychic">Psychic</MenuItem>
+          <MenuItem value="Rock">Rock</MenuItem>
+          <MenuItem value="Steel">Steel</MenuItem>
+          <MenuItem value="Water">Water</MenuItem>
+        </Select>
       </div>
-      <button type="submit">Añadir</button>
+      <div className='form__button-container'>
+        <button className="form__button" type="submit">Añadir</button>
+      </div>
     </form>
-    <div className="form__preview">
-      <span>Vista previa</span>
-      <img src={preview ? preview : defaultPreview} alt="vista previa"></img>
-    </div>
+
   </div>;
 };
 

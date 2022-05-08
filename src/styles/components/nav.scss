@@ -2,19 +2,20 @@
 
 .nav {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: left;
     flex-wrap: wrap;
     gap: 5px;
     background-color: $pokegray;
-    padding:15px;
+    padding: 15px;
 }
 
+.nav__link-container{
 
-
-
+}
 
 .nav__link {
-    color:$pokeyellow;
+    color: $pokeyellow;
     font-weight: 800;
     background-color: $pokeblue;
     display: block;
@@ -24,8 +25,13 @@
     min-width: 150px;
     text-align: center;
     border-radius: 5px;
+}
 
+.hidden {
+    display: none;
+}
 
-
-
+.nav__burger {
+    min-width: 30px;
+    max-width: 40px;
 }
