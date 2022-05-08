@@ -26,3 +26,8 @@
 .form__preview>img {
     max-width: 250px;
 }
+
+.form__input-box{
+    display:flex;
+    flex-direction: column;
+}
