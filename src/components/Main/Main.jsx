@@ -4,7 +4,7 @@ import Home from './Home/Home';
 import Form from './Form/Form';
 import Detail from './Detail';
 import Search from './Search/Search';
-import { pokelistContext } from "../../context/pokelist";
+
 
 const Main = () => {
   return <div>
