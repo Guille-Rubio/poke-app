@@ -8,7 +8,7 @@ const Card = (props) => {
   const { removePokemon } = useContext(pokelistContext)
 
   const { name, id } = props.value
-  const image = props.value.sprites.other.dream_world.front_default
+  const image = props.value.sprites.other.dream_world.front_default || props.image
   const type_1 = props.value.types[0]["type"]["name"] || "";
   const type_2 = props.value.types[1] ? props.value.types[1]["type"]["name"] : "";
 

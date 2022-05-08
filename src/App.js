@@ -20,12 +20,13 @@ function App() {
     setPokelist([...pokelist, newPokemon]);
   }
 
+
   const removePokemon = (pokemon) => {
     console.log("should delete pokemon from list")
 
   }
 
-  const setPokemonToLookFor =(event)=>{
+  const setPokemonToLookFor = (event) => {
     event.preventDefault();
     setQueryValue(event.target.value);
   }
@@ -39,7 +40,7 @@ function App() {
         })()
       }
     }
-  }, [apiQuery,pokelist]
+  }, [apiQuery, pokelist]
   )
 
 
